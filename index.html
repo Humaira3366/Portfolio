@@ -1,185 +1,654 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <title>Humaira || Portfolio</title>
-    <link rel="stylesheet" href="style1.css">
-</head>
-<body>
-    <nav>
-        <input type="checkbox" class="checkbox" id="check">
-        <h1 class="nav_head">Humaira Fathima N</h1>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#About">About</a></li>
-            <li><a href="#service">Service</a></li>
-            <li><a href="#Portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
+<meta name="claude:viewport-fit-sides" content="cover">
 
-            <a href="#contact"><button class="contact_btn">Contact Me</button></a>
-        </ul>
 
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-    </nav>
 
-    <section id="home" class="home">
-        <img src="port2.jpg" alt="" width="450px" height="550px">
-        <div class="description">
-            <h1>Hello I'm  <br><span>Humaira Fathima</span></h1>
-            <h2>I'm a <span>Data Scientist...</span></h2>
-            <p>Data Scientist skilled in building end-to-end ML solutions, predictive models, and GenAI applications using Python, SQL, deep learning, and modern LLMs. Experienced in NLP, forecasting, and image classification, with a strong focus on deploying scalable, customer-centric AI systems. Passionate about using data science and GenAI to drive intelligent mobility solutions. </p>
-            <div class="font">
-                <a href="https://github.com/Humaira3366" target="_blank">
-                    <i class="fa-brands fa-github" style="color: #f1f2f3;"></i>
-                </a>
+<meta charset="UTF-8">
+<meta name="description" content="Humaira Fathima N - Data Analyst & AI Engineer. NLP, LLMs, RAG systems, forecasting and procurement analytics.">
+<title>Humaira Fathima N | Data Analyst & AI Engineer</title>
+<style>
+:root{
+  --bg:#0a0a12; --panel:#13131f; --panel2:#1a1a2a; --line:#272739;
+  --pink:#ff2d7a; --amber:#ffb020; --cyan:#3dd6ff;
+  --text:#eceaf2; --muted:#9b99ad; --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.grad{background:linear-gradient(90deg,var(--pink),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:120px 8%;position:relative}
+.tag{display:inline-block;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:12px;font-weight:600}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin-bottom:14px}
+.sub{color:var(--muted);max-width:640px;margin-bottom:56px}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--pink),var(--amber));z-index:100}
+nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:16px 8%;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(10,10,18,.8);backdrop-filter:blur(14px);border-color:var(--line)}
+.logo{font-weight:800;letter-spacing:.02em;font-size:1.3rem}
+.links{display:flex;gap:28px}
+.links a{font-size:.92rem;color:var(--muted);transition:color .2s}
+.links a:hover,.links a.active{color:var(--text)}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+@media(max-width:820px){
+  .burger{display:block}
+  .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--panel);padding:20px 8%;gap:16px;border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  section{padding:90px 6%}
+}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;border:1px solid var(--line);background:var(--panel);cursor:pointer;transition:transform .2s,box-shadow .2s;color:var(--text)}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:linear-gradient(90deg,var(--pink),#ff6a3d);border:0;box-shadow:0 10px 30px -8px rgba(255,45,122,.6)}
+.btn-primary:hover{box-shadow:0 16px 40px -8px rgba(255,45,122,.8)}
+#hero{min-height:100vh;display:flex;align-items:center;overflow:hidden}
+#bg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.glow{position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,.25),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:900px}
+.hello{font-size:1.2rem;color:var(--muted);margin-bottom:8px}
+.name{font-size:clamp(3rem,8vw,6.2rem);font-weight:800;line-height:1.02;letter-spacing:-.02em}
+.role{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:600;margin:18px 0 22px;min-height:2.6em}
+.cursor{display:inline-block;width:3px;height:1em;background:var(--pink);margin-left:4px;vertical-align:middle;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-desc{color:var(--muted);max-width:640px;font-size:1.05rem}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.socials{display:flex;gap:12px;margin-top:40px}
+.socials a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:.25s}
+.socials a:hover{color:var(--pink);border-color:var(--pink);transform:translateY(-3px)}
+.socials svg{width:20px;height:20px;fill:currentColor}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:0 8%;margin-top:-40px;position:relative;z-index:2}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;text-align:center;transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-6px);border-color:var(--pink)}
+.stat .num{font-size:2.4rem;font-weight:800}
+.stat .lbl{color:var(--muted);font-size:.9rem}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:start}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about-text p{color:var(--muted);margin-bottom:18px;font-size:1.02rem}
+.about-text strong{color:var(--text)}
+.focus{display:grid;gap:14px}
+.focus-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;display:flex;gap:18px;align-items:flex-start;transition:transform .2s,border-color .3s}
+.focus-card:hover{border-color:var(--cyan)}
+.focus-card .ic{font-size:1.6rem}
+.focus-card h4{margin-bottom:4px}
+.focus-card p{color:var(--muted);font-size:.93rem}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.chip{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.2s;font-size:.9rem}
+.chip:hover{color:var(--text)}
+.chip.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.skill-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .3s,border-color .3s}
+.skill-card:hover{transform:translateY(-4px);border-color:var(--pink)}
+.skill-card h4{margin-bottom:16px;font-size:1.05rem}
+.bar{margin-bottom:14px}
+.bar-top{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:6px;color:var(--muted)}
+.bar-track{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--pink),var(--amber));transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.timeline{position:relative;padding-left:30px;max-width:860px}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--pink),var(--line))}
+.tl-item{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;margin-bottom:24px;transition:border-color .3s}
+.tl-item:hover{border-color:var(--pink)}
+.tl-item::before{content:"";position:absolute;left:-30px;top:34px;width:14px;height:14px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 5px rgba(255,45,122,.2)}
+.tl-date{font-size:.82rem;color:var(--amber);letter-spacing:.06em}
+.tl-item h3{font-size:1.25rem;margin:6px 0 2px}
+.tl-item .org{color:var(--muted);margin-bottom:14px}
+.tl-item ul{padding-left:18px;color:var(--muted)}
+.tl-item li{margin-bottom:8px}
+.tl-item li b{color:var(--text)}
+.edu-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:860px;margin-top:10px}
+.edu{background:var(--panel2);border-radius:var(--r);padding:22px;border:1px dashed var(--line)}
+.edu h4{margin-bottom:4px}
+.edu p{color:var(--muted);font-size:.92rem}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:24px}
+.proj{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;cursor:pointer;position:relative;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s;display:flex;flex-direction:column}
+.proj::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(255,45,122,.13),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
+.proj:hover{transform:translateY(-8px);border-color:var(--pink);box-shadow:0 20px 50px -20px rgba(255,45,122,.5)}
+.proj:hover::after{opacity:1}
+.proj.hide{display:none}
+.proj .ico{font-size:2rem;margin-bottom:14px}
+.proj h3{font-size:1.2rem;margin-bottom:10px;line-height:1.3}
+.proj p{color:var(--muted);font-size:.93rem;margin-bottom:18px;flex:1}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font-size:.74rem;padding:4px 10px;border-radius:99px;background:var(--panel2);color:var(--cyan);border:1px solid var(--line)}
+.proj .more{margin-top:18px;color:var(--pink);font-weight:600;font-size:.9rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:var(--panel);border:1px solid var(--line);border-radius:22px;max-width:640px;width:100%;max-height:88vh;overflow:auto;padding:36px;position:relative}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:0;color:var(--muted);font-size:1.6rem;cursor:pointer}
+.modal h3{font-size:1.6rem;margin-bottom:8px}
+.modal ul{padding-left:20px;color:var(--muted);margin:16px 0}
+.modal li{margin-bottom:8px}
+.modal .stack{margin-top:14px}
+.demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+@media(max-width:900px){.demo-wrap{grid-template-columns:1fr}}
+.chatbox{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.chat-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem}
+.dot{width:10px;height:10px;border-radius:50%;background:#2ee59d;box-shadow:0 0 10px #2ee59d}
+.chat-body{height:320px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.92rem}
+.msg.bot{background:var(--panel2);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:linear-gradient(90deg,var(--pink),#ff6a3d);align-self:flex-end;border-bottom-right-radius:4px}
+.msg small{display:block;color:var(--amber);margin-top:6px;font-size:.75rem}
+.chat-input{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line)}
+.chat-input input{flex:1;background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:12px 16px;border-radius:999px;outline:none;font:inherit}
+.chat-input input:focus{border-color:var(--pink)}
+.chat-input button{background:var(--pink);border:0;color:#fff;padding:0 22px;border-radius:999px;cursor:pointer;font-weight:600}
+.demo-copy h2{margin-bottom:18px}
+.demo-copy p{color:var(--muted);margin-bottom:14px}
+.pipeline{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.pipe-step{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:.9rem;opacity:.35;transition:.4s}
+.pipe-step.active{opacity:1;border-color:var(--pink);box-shadow:0 0 20px -6px var(--pink)}
+.pipe-step b{color:var(--amber);min-width:24px}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:50px}
+@media(max-width:900px){.contact-wrap{grid-template-columns:1fr}}
+.c-item{display:flex;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+.c-item .ic{width:46px;height:46px;border-radius:14px;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;font-size:1.2rem}
+.form{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:34px;display:grid;gap:16px}
+.form input,.form textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:14px 16px;border-radius:12px;font:inherit;outline:none;transition:border-color .2s}
+.form input:focus,.form textarea:focus{border-color:var(--pink)}
+.form textarea{min-height:130px;resize:vertical}
+footer{padding:30px 8%;text-align:center;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+.fit-table{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.fit-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:20px;padding:18px 24px;border-top:1px solid var(--line);font-size:.95rem}
+.fit-row:first-child{border-top:0}
+.fit-row span:first-child{font-weight:600}
+.fit-row span:last-child{color:var(--muted)}
+.fit-head{background:var(--panel2);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
+.fit-head span{font-weight:600;color:var(--pink)}
+@media(max-width:640px){.fit-row{grid-template-columns:1fr;gap:6px}.fit-head{display:none}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
 
-                <a href="https://www.linkedin.com/in/humaira-fathima-778415295/" target="_blank">
-                    <i class="fa-brands fa-linkedin-in" style="color: #f1f2f3;"></i>
-                </a>
 
-                <a href="" target="_blank">
-                    <i class="fa-brands fa-whatsapp" style="color: #f1f2f3;"></i>
-                </a>
-            </div>
-            <a  href="https://drive.google.com/file/d/1JZvgK1xaUrte4Trfq2zaMGwsLJhHJDq0/view?usp=drivesdk " target="_blank"> <button>Download CV</button></a>
-        </div>
-    </section>
+<div id="progress"></div>
 
-    <section id="about" class="about">
-        <div class="about_section">
-            <h1>About <span>Me</span></h1>
-            <h2>Data <span>Scientist!</span></h2>
-            <p>Hi, Data Scientist & GenAI Engineer skilled in building end-to-end NLP and LLM applications, including sequence classification, QA/chatbots, semantic search, and summarization. Experienced with modern transformer models, fine-tuning, and deploying scalable GenAI systems using Hugging Face, LangChain, and Streamlit. Strong in multimodal workflows, REST API deployment, and containerized ML pipelines with Docker. Passionate about applying SoTA NLP/LLM techniques to build robust, efficient, and high-impact AI products at scale.
-            </p>
-        </div>
-        <div class="about_photo">
-            <img src="port2.jpg" alt="" width="450px" height="550px">
-        </div>
-    </section>
+<nav id="nav">
+  <div class="logo grad">HF.</div>
+  <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+  <div class="links" id="links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#demo">Live Demo</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-    <section id="services">
-        <h1 class="service_section">My <span>Services</span></h1>
-        <div class="card">
-            <div class="service_card">
-            <i class="fas fa-computer"></i>
-            <h2>UI/UX Design</h2>
-            <p>I provide comprehensive UI/UX design solutions—from user research, journey mapping, and wireframing to polished, responsive interfaces. My design process focuses on solving real user problems with clean, intuitive, and visually appealing layouts. I specialize in creating web and mobile experiences that not only look great but also drive engagement and usability</p>
-            <a href="#">Read More...</a>
-        </div>
-
-         <div class="service_card">
-            <i class="fa-solid fa-network-wired"></i>
-            <h2>Full Stack Developer</h2>
-            <p>Skilled in building full-stack web applications using React, Node.js, Express, and MongoDB/SQL. Completed a practical internship, gaining hands-on experience with real-world projects, API development, Git, and agile workflows. Capable of delivering responsive and scalable solutions from frontend to backend.</p>
-            <a href="#">Read More...</a>
-        </div>
-
-         <div class="service_card">
-            <i class="fa-solid fa-robot"></i>
-            <h2>AI/ML Developer</h2>
-            <p>I provide complete machine learning solutions—from data preprocessing and model development to evaluation and deployment—using Python, Scikit-learn, TensorFlow, and Keras. Backed by a professional certification in Machine Learning, I apply both theory and practice in real-world projects like stock analysis dashboards and image classification systems.</p>
-            <a href="#">Read More...</a>
-        </div>
+<section id="hero">
+  <canvas id="bg"></canvas>
+  <div class="glow" id="glow"></div>
+  <div class="hero-inner">
+    <p class="hello">Hi, I'm</p>
+    <h1 class="name">Humaira <span class="grad">Fathima N</span></h1>
+    <div class="role"><span id="typed"></span><span class="cursor"></span></div>
+    <p class="hero-desc">Python-first Data Analyst building GenAI applications. I collect, clean and model complex data, build RAG and LangChain systems on top of LLMs, and turn results into recommendations that business teams can act on. My recent work includes procurement intelligence for state-level tender data.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View my work</a>
+      <a href="https://drive.google.com/file/d/1vwQ_qkwMdVzX0lxSrJjR9f1EEb5rtjzg/view?usp=sharing" target="_blank" rel="noopener" class="btn">View resume (PDF)</a>
+      <a href="#contact" class="btn">Let's talk</a>
     </div>
-    </section>
-
-    <section id="portfolio">
-        <h1 class="port_section">My <span>Work</span></h1>
-        <div class="project">
-            <div class="port_card">
-                <img src="stu.jpg" alt="" width="350px" height="350px">
-                <div class="content">
-                    <h1>🎓 Student Portal UI/UX Design (Figma)</h1>
-                    <p>Designed a responsive student portal in Figma with a pastel UI, intuitive layout, and features for certifications, practice, and mentor support.</p>
-                </div>
-            </div>
-
-             <div class="port_card">
-                <img src="block.jpg" alt="" width="350px" height="350px">
-                <div class="content">
-                    <h1>🌐 Website Blocker Using Python</h1>
-                    <p>Built a Python-based website blocker with Chrome extension support, HTTP/proxy blocking, and screen time limits for controlled web access.</p>
-                </div>
-            </div>
-
-             <div class="port_card">
-                <img src="rag1.jpg" alt="" width="350px" height="350px">
-                <div class="content">
-                    <h1>🤖 RAG-Powered Web Content Question-Answering System with DeepSeek</h1>
-                    <p>Built a RAG-based chatbot using DeepSeek for real-time, citation-backed Q&A with vector search, API integration, and a clean UI.</p>
-                </div>
-            </div>
-        </div>
-<!-- Contact Section -->
-<section id="contact" style="padding: 60px 0; background:#2f2f2f; text-align:center;">
-    <h1 style="color:white; font-size:40px; margin-bottom:40px;">
-        Contact <span style="color:#ff007f;">Me</span>
-    </h1>
-
-    <div style="
-        width: 60%; 
-        margin: auto; 
-        position: relative; 
-        border-radius: 15px; 
-        overflow: hidden; 
-        cursor: pointer; 
-        transition: transform 0.3s;">
-        
-        <!-- Background Image / Gradient -->
-        <div style="
-            background-image: url('https://via.placeholder.com/800x400?text=Contact+Me');
-            background-size: cover;
-            background-position: center;
-            height: 300px;">
-        </div>
-
-        <!-- Gradient Overlay + Text -->
-        <div style="
-            position: absolute; 
-            bottom: 0; 
-            width: 100%; 
-            padding: 20px; 
-            background: linear-gradient(to top, #ff007f, transparent);
-            color: white;
-            text-align: left;">
-            
-            <h2 style="margin: 0; font-size: 28px;">Let's Connect</h2>
-            <p style="font-size: 16px; margin-top:10px;">
-                Have a project in mind or want to collaborate?  
-                Fill out the form and I’ll get back to you!
-            </p>
-
-            <!-- Contact Form -->
-            <form action="https://formsubmit.co/humaira2004super@gmail.com" method="POST" style="margin-top:20px;">
-                
-                <input type="text" name="name" placeholder="Your Name" required
-                    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:none;">
-
-                <input type="email" name="email" placeholder="Your Email" required
-                    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:none;">
-
-                <textarea name="message" placeholder="Your Message" required
-                    style="width:100%; padding:12px; height:100px; margin-bottom:10px; border-radius:8px; border:none;"></textarea>
-
-                <button type="submit"
-                    style="background:#ff007f; color:white; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
-                    Send Message
-                </button>
-            </form>
-
-        </div>
+    <div class="socials">
+      <a href="#contact" aria-label="Contact"><svg viewBox="0 0 24 24"><path d="M2 5h20v14H2zm2 2v.5l8 5 8-5V7z"/></svg></a>
+      <a href="https://github.com/humaira3366" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a>
+      <!-- Replace the href below with your LinkedIn profile URL -->
+      <a href="https://www.linkedin.com/in/humaira-fathima-778415295/" target="_blank" rel="noopener" id="linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.78 2.66 4.78 6.12V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21h-4z"/></svg></a>
     </div>
+  </div>
 </section>
 
+<div class="stats reveal">
+  <div class="stat"><div class="num" data-count="3" data-suffix="+">0</div><div class="lbl">State procurement portals scraped</div></div>
+  <div class="stat"><div class="num" data-count="7" data-suffix="">0</div><div class="lbl">Projects across GenAI, CV, forecasting and data</div></div>
+  <div class="stat"><div class="num" data-count="5" data-suffix="+">0</div><div class="lbl">AI, ML and analytics projects</div></div>
+  <div class="stat"><div class="num" data-count="4" data-suffix="">0</div><div class="lbl">Core domains: NLP, LLMs, ML, Analytics</div></div>
+</div>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="tag">About me</span>
+      <h2>Python data analyst building <span class="grad">GenAI systems</span>.</h2>
+      <p>I'm a Data Analyst and AI Engineer based in Chennai. I work as a <strong>Program Associate – Data Analyst at CEGIS Foundation</strong>, where I build Python data pipelines, predictive models and risk analytics on public procurement data.</p>
+      <p>My focus is applied GenAI and analytics: LLM applications with <strong>LangChain</strong> and retrieval-augmented generation (RAG), embeddings and vector search, NLP for text analysis, and forecasting. I deploy these as REST APIs with FastAPI and Docker, and I report findings to non-technical stakeholders.</p>
+      <p>I'm pursuing an <strong>MCA at Manipal University Online</strong>, alongside a BCA and an AI/ML certification from IIT Madras (via GUVI).</p>
+    </div>
+    <div class="focus reveal">
+      <div class="focus-card"><div class="ic">&#129302;</div><div><h4>GenAI &amp; LLM Applications</h4><p>LangChain chains, RAG pipelines, embeddings, vector search, prompt design and context management, Hugging Face models.</p></div></div>
+      <div class="focus-card"><div class="ic">&#128221;</div><div><h4>Python Data Pipelines</h4><p>Ingestion, transformation and validation with Pandas and SQL, reusable components, and REST API delivery.</p></div></div>
+      <div class="focus-card"><div class="ic">&#128200;</div><div><h4>Predictive Analytics</h4><p>Time-series forecasting, CatBoost and ARIMA models, feature engineering, model evaluation.</p></div></div>
+      <div class="focus-card"><div class="ic">&#128269;</div><div><h4>Data Extraction at Scale</h4><p>Selenium, Playwright (stealth), BeautifulSoup and Google API automation for public-sector data.</p></div></div>
+      <div class="focus-card"><div class="ic">&#128202;</div><div><h4>Insight Dashboards</h4><p>Power BI and Streamlit interfaces that turn analysis into decisions stakeholders can use.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="reveal">
+    <span class="tag">Skills</span>
+    <h2>What I <span class="grad">work with</span></h2>
+    <p class="sub">Filter by area. Bars show my comfort level with each tool.</p>
+  </div>
+  <div class="chips reveal" id="skillTabs">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="ai">AI / ML</button>
+    <button class="chip" data-f="data">Data &amp; Analytics</button>
+    <button class="chip" data-f="eng">Engineering &amp; Tools</button>
+  </div>
+  <div class="skill-grid" id="skillGrid"></div>
+</section>
+
+<section id="experience">
+  <div class="reveal">
+    <span class="tag">Experience</span>
+    <h2>Where I've <span class="grad">built things</span></h2>
+    <p class="sub">Professional work and education, most recent first.</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-date">JAN 2026 – PRESENT · CHENNAI</div>
+      <h3>Program Associate – Data Analyst</h3>
+      <div class="org">CEGIS Foundation</div>
+      <ul>
+        <li><b>Procurement web scraping:</b> built automated extraction pipelines across public tender portals in <b>Tamil Nadu, Odisha and Uttar Pradesh</b> using Selenium, BeautifulSoup and Playwright (stealth mode).</li>
+        <li><b>Google API automation:</b> automated data collection and reporting workflows with Google APIs to reduce manual handling.</li>
+        <li><b>Predictive analytics:</b> developed a <b>CatBoost</b> model to predict which bidders are most likely to win or lose a tender.</li>
+        <li><b>Cartel detection:</b> identified cartel and collusion patterns in tender bidding data.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">AUG 2024 – FEB 2025</div>
+      <h3>Advanced AI &amp; Machine Learning Certification</h3>
+      <div class="org">IIT Madras (via GUVI)</div>
+      <ul><li>Coursework and projects spanning machine learning, deep learning, NLP and applied AI.</li></ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">AUG 2022 – APR 2025</div>
+      <h3>Bachelor of Computer Applications (BCA)</h3>
+      <div class="org">CTTE College for Women, Chennai</div>
+    </div>
+  </div>
+  <div class="edu-row reveal">
+    <div class="edu"><h4>MCA (Pursuing)</h4><p>Manipal University Online</p></div>
+  </div>
+</section>
+
+<section id="fit">
+  <div class="reveal">
+    <span class="tag">Role Fit</span>
+    <h2>Data Analyst, <span class="grad">Python &amp; GenAI</span></h2>
+    <p class="sub">How my work lines up with the core requirements for this kind of role, with the evidence behind each one.</p>
+  </div>
+  <div class="fit-table reveal">
+    <div class="fit-row fit-head"><span>Requirement</span><span>Evidence</span></div>
+    <div class="fit-row"><span>Advanced Python for data work</span><span>Daily Python use for scraping, cleaning, modelling and dashboards: Pandas, scikit-learn, CatBoost, Selenium and Playwright.</span></div>
+    <div class="fit-row"><span>Data collection, cleaning and structuring</span><span>Built extraction pipelines across three state procurement portals and structured the output for analysis.</span></div>
+    <div class="fit-row"><span>Analysis, forecasting and insight</span><span>CatBoost bidder-outcome model, cartel-pattern analysis, CapEx data pipelines, traffic-congestion analysis and Nifty 50 market-trend analysis.</span></div>
+    <div class="fit-row"><span>Generative AI and LLM fundamentals</span><span>RAG systems covering chunking, embeddings, vector search, grounded answers with citations, and LLM response synthesis.</span></div>
+    <div class="fit-row"><span>LangChain</span><span>LangChain-based RAG chatbot integrating Hugging Face models with document retrieval and a REST API.</span></div>
+    <div class="fit-row"><span>Reusable, maintainable components</span><span>Modular pipeline stages (ingestion, chunking, retrieval, inference) deployed as FastAPI services in Docker containers.</span></div>
+    <div class="fit-row"><span>Stakeholder communication</span><span>Streamlit and Power BI dashboards, plus written findings and recommendations for non-technical audiences.</span></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="reveal">
+    <span class="tag">Projects</span>
+    <h2>Selected <span class="grad">work</span></h2>
+    <p class="sub">Click any project for details. Filter by focus area.</p>
+  </div>
+  <div class="chips reveal" id="projTabs">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="ai">GenAI &amp; NLP</button>
+    <button class="chip" data-f="data">Forecasting &amp; Analytics</button>
+    <button class="chip" data-f="eng">Apps &amp; Automation</button>
+  </div>
+  <div class="proj-grid" id="projGrid"></div>
+</section>
+
+<section id="demo">
+  <div class="demo-wrap">
+    <div class="demo-copy reveal">
+      <span class="tag">Interactive</span>
+      <h2>How my <span class="grad">RAG chatbot</span> answers</h2>
+      <p>Ask a question and watch the pipeline run step by step. This is a simulated walkthrough of the architecture behind my RAG-powered PDF chatbot, which retrieves relevant passages and cites its sources.</p>
+      <div class="pipeline" id="pipeline">
+        <div class="pipe-step"><b>1</b> Ingest &amp; chunk the document</div>
+        <div class="pipe-step"><b>2</b> Embed chunks into a vector store</div>
+        <div class="pipe-step"><b>3</b> Semantic retrieval of top matches</div>
+        <div class="pipe-step"><b>4</b> LLM synthesises a grounded answer</div>
+        <div class="pipe-step"><b>5</b> Return answer with citations via REST API</div>
+      </div>
+    </div>
+    <div class="chatbox reveal">
+      <div class="chat-head"><span class="dot"></span> Portfolio Assistant (demo)</div>
+      <div class="chat-body" id="chatBody">
+        <div class="msg bot">Hi! Ask me about my projects, skills or experience.<small>Simulated demo</small></div>
+      </div>
+      <form class="chat-input" id="chatForm">
+        <input id="chatIn" placeholder="e.g. What does your CatBoost model predict?" autocomplete="off">
+        <button type="submit">Ask</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="reveal">
+      <span class="tag">Contact</span>
+      <h2>Let's build something <span class="grad">useful</span></h2>
+      <p class="sub" style="margin-bottom:34px">Open to Data Analyst, AI Engineer and GenAI roles. Send a message and I'll get back to you.</p>
+      <div class="c-item"><div class="ic">&#9993;</div><span>humaira2004super@gmail.com</span> <button class="btn" id="copyEmail" type="button" style="padding:6px 14px;margin-left:8px">Copy</button></div>
+      <div class="c-item"><div class="ic">&#128222;</div><span>+91 95007 04568</span></div>
+      <div class="c-item"><div class="ic">&#128205;</div><span>Chennai, India</span></div>
+      <div class="hero-cta" style="margin-top:8px">
+        <a class="btn" href="https://github.com/humaira3366" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/humaira-fathima-778415295/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://drive.google.com/file/d/1vwQ_qkwMdVzX0lxSrJjR9f1EEb5rtjzg/view?usp=sharing" target="_blank" rel="noopener">Resume (PDF)</a>
+      </div>
+    </div>
+    <form class="form reveal" id="contactForm">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button class="btn btn-primary" type="submit" style="justify-self:start">Send message</button>
+      <p id="formNote" role="status" style="color:var(--muted);font-size:.9rem"></p>
+    </form>
+  </div>
+</section>
+
+<footer>&copy; <span id="yr"></span> Humaira Fathima N · Data Analyst &amp; AI Engineer</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" id="mClose" aria-label="Close">&times;</button>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<script>
+const skills = [
+  {cat:'ai', name:'Python', lvl:92},
+  {cat:'ai', name:'LangChain & Prompt Design', lvl:84},
+  {cat:'data', name:'Statistical Analysis', lvl:84},
+  {cat:'data', name:'Data Validation & Quality Checks', lvl:86},
+  {cat:'ai', name:'NLP & Transformers', lvl:86},
+  {cat:'ai', name:'LLMs, RAG & LangChain', lvl:85},
+  {cat:'ai', name:'Machine Learning (CatBoost, scikit-learn)', lvl:85},
+  {cat:'ai', name:'Deep Learning (TensorFlow, Keras)', lvl:78},
+  {cat:'data', name:'SQL', lvl:88},
+  {cat:'data', name:'Pandas & Data Wrangling', lvl:92},
+  {cat:'data', name:'Power BI & Streamlit', lvl:84},
+  {cat:'data', name:'Time-Series & ARIMA', lvl:82},
+  {cat:'eng', name:'Web Scraping (Selenium, Playwright)', lvl:90},
+  {cat:'eng', name:'FastAPI & REST APIs', lvl:80},
+  {cat:'eng', name:'Docker & Git', lvl:76},
+  {cat:'eng', name:'Figma / UI-UX', lvl:74}
+];
+
+const projects = [
+  {cat:'data', icon:'\u26A1', title:'PowerPulse: Household Energy Forecasting',
+   desc:'Time-series forecasting of household electricity consumption from smart-meter data.',
+   stack:['Python','ARIMA','Feature Engineering','Pandas','Machine Learning'],
+   points:['Forecasting system combining ARIMA and machine learning models on smart-meter data.','Data cleaning and feature engineering lifted model performance to R² = 0.89.','Visualisations supporting energy-usage decisions.']},
+  {cat:'ai', icon:'\u{1F4C4}', title:'RAG-Powered PDF Chatbot',
+   desc:'Question answering over large document collections with grounded, cited answers.',
+   stack:['Python','LangChain','Hugging Face','Vector DB','FastAPI','Docker'],
+   points:['End-to-end ingestion: document loading, text chunking, embedding generation.','Semantic retrieval with vector search feeding an LLM for grounded response synthesis.','Inference exposed through REST APIs with a lightweight UI.']},
+  {cat:'eng', icon:'\u{1F310}', title:'Web Scraping on Procurement Portals',
+   desc:'Automated extraction of public tender data from state procurement portals.',
+   stack:['Python','Selenium','Playwright (stealth)','BeautifulSoup','Google APIs'],
+   points:['Built scraping pipelines for procurement portals in Tamil Nadu, Odisha and Uttar Pradesh.','Structured the collected tender data for analysis and reporting.','Automated data collection and reporting workflows with Google APIs.']},
+  {cat:'ai', icon:'\u{1F50D}', title:'Predictive Analysis & Cartelisation Detection',
+   desc:'Predictive modelling of tender outcomes and detection of possible cartel behaviour.',
+   stack:['Python','CatBoost','Computer Vision','Feature Engineering'],
+   points:['CatBoost model predicting which bidders are most likely to win or lose a tender.','Computer vision approach applied to identify cartelisation patterns.','Findings prepared for review by the team.']},
+  {cat:'data', icon:'\u{1F4B0}', title:'CapEx Data Pipeline (CMIE API)',
+   desc:'Automated pulling and processing of capital expenditure data from the CMIE API.',
+   stack:['Python','REST APIs','Pandas','SQL'],
+   points:['Automated API pulls of CapEx data from CMIE.','Cleaned and structured the returned data for analysis.']},
+  {cat:'data', icon:'\u{1F6A6}', title:'Traffic & Road Congestion Analysis',
+   desc:'Analysis of traffic and road congestion using Google APIs.',
+   stack:['Python','Google APIs','Pandas','Data Analysis'],
+   points:['Collected traffic and travel-time data through Google APIs.','Analysed congestion patterns across road segments.']},
+  {cat:'ai', icon:'\u{1F41F}', title:'Multiclass Fish Image Classification',
+   desc:'CNN model that classifies fish species from images.',
+   stack:['Python','CNN','Deep Learning','Image Processing'],
+   points:['Built a convolutional neural network for multiclass fish image classification.','Applied image preprocessing before training and evaluation.']},
+  {cat:'data', icon:'\u{1F4C8}', title:'Nifty 50 Stock Analysis',
+   desc:'Analytics platform for Nifty 50 stock performance and sector trends.',
+   stack:['Python','Pandas','SQL','Power BI','Streamlit'],
+   points:['Data wrangling, statistical analysis and feature engineering on Nifty 50 data.','Identified top-performing, volatile and sector-wise trends.','Interactive Streamlit dashboard for exploring market trends.']}
+];
+
+/* Typewriter */
+const roles = ['Python Data Analyst','GenAI Engineer','Data Analyst & AI Engineer','LangChain & RAG Developer','Forecasting Specialist'];
+let ri=0, ci=0, del=false;
+const typed = document.getElementById('typed');
+function type(){
+  const w = roles[ri];
+  typed.textContent = del ? w.slice(0,ci--) : w.slice(0,ci++);
+  let d = del ? 45 : 95;
+  if(!del && ci>w.length){ d=1600; del=true; }
+  else if(del && ci<0){ del=false; ci=0; ri=(ri+1)%roles.length; d=300; }
+  setTimeout(type,d);
+}
+type();
+
+/* Particle background */
+const cv = document.getElementById('bg'), ctx = cv.getContext('2d');
+let W,H,pts=[];
+function resize(){
+  W=cv.width=cv.offsetWidth; H=cv.height=cv.offsetHeight;
+  pts=Array.from({length:Math.min(90,Math.floor(W*H/14000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}));
+}
+window.addEventListener('resize',resize); resize();
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1;
+    if(p.y<0||p.y>H) p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,1.6,0,Math.PI*2); ctx.fillStyle='rgba(255,45,122,.7)'; ctx.fill();
+  }
+  for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+    const a=pts[i], b=pts[j], d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<130){ ctx.strokeStyle=`rgba(61,214,255,${.22*(1-d/130)})`; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+  }
+  if(!reduceMotion) requestAnimationFrame(draw);
+}
+draw();
+const hero = document.getElementById('hero'), glow = document.getElementById('glow');
+hero.addEventListener('mousemove',e=>{
+  const r=hero.getBoundingClientRect();
+  glow.style.left=(e.clientX-r.left)+'px'; glow.style.top=(e.clientY-r.top)+'px';
+});
+
+/* Skills */
+const grid = document.getElementById('skillGrid');
+const groups = {ai:'AI / ML', data:'Data & Analytics', eng:'Engineering & Tools'};
+function renderSkills(f='all'){
+  const cats = f==='all' ? Object.keys(groups) : [f];
+  grid.innerHTML = cats.map(c=>{
+    const items = skills.filter(s=>s.cat===c).map(s=>`
+      <div class="bar"><div class="bar-top"><span>${s.name}</span><span>${s.lvl}%</span></div>
+      <div class="bar-track"><div class="bar-fill" data-w="${s.lvl}"></div></div></div>`).join('');
+    return `<div class="skill-card"><h4>${groups[c]}</h4>${items}</div>`;
+  }).join('');
+  requestAnimationFrame(()=>document.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.w+'%'));
+}
+document.querySelectorAll('#skillTabs .chip').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('#skillTabs .chip').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on'); renderSkills(btn.dataset.f);
+});
+renderSkills();
+
+/* Projects */
+const pGrid = document.getElementById('projGrid');
+pGrid.innerHTML = projects.map((p,i)=>`
+  <div class="proj reveal" data-cat="${p.cat}" data-i="${i}" tabindex="0" role="button">
+    <div class="ico">${p.icon}</div>
+    <h3>${p.title}</h3>
+    <p>${p.desc}</p>
+    <div class="stack">${p.stack.slice(0,4).map(s=>`<span>${s}</span>`).join('')}</div>
+    <div class="more">View details &rarr;</div>
+  </div>`).join('');
+pGrid.querySelectorAll('.proj').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    card.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+  card.onclick=()=>openModal(projects[card.dataset.i]);
+  card.onkeydown=e=>{ if(e.key==='Enter') openModal(projects[card.dataset.i]); };
+});
+document.querySelectorAll('#projTabs .chip').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('#projTabs .chip').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const f=btn.dataset.f;
+  document.querySelectorAll('.proj').forEach(c=>c.classList.toggle('hide', f!=='all' && c.dataset.cat!==f));
+});
+
+/* Modal */
+const modal=document.getElementById('modal');
+function openModal(p){
+  document.getElementById('mBody').innerHTML = `
+    <h3>${p.icon} ${p.title}</h3>
+    <p style="color:var(--muted)">${p.desc}</p>
+    <ul>${p.points.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <div class="stack">${p.stack.map(s=>`<span>${s}</span>`).join('')}</div>`;
+  modal.classList.add('open');
+}
+const closeModal=()=>modal.classList.remove('open');
+document.getElementById('mClose').onclick=closeModal;
+modal.onclick=e=>{ if(e.target===modal) closeModal(); };
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+/* Demo chat (scripted, no backend) */
+const replies = [
+  {k:['catboost','bidder','tender','win','lose'], a:'The CatBoost model predicts which bidders are most likely to win or lose a tender, built on historical bidding features from procurement data at CEGIS Foundation.'},
+  {k:['rag','chatbot','pdf'], a:'The RAG PDF chatbot chunks documents, embeds them into a vector store, retrieves the most relevant passages, and has an LLM answer with citations, served through a REST API.'},
+  {k:['fish','cnn','image','vision'], a:'I built a CNN for multiclass fish image classification, with image preprocessing before training.'},
+  {k:['capex','cmie'], a:'I automate pulling CapEx data from the CMIE API, then clean and structure it for analysis.'},
+  {k:['traffic','congestion','google'], a:'The traffic project uses Google APIs to collect travel data and analyse road congestion patterns.'},
+  {k:['nifty','stock','market'], a:'The Nifty 50 project analyses stock performance and sector trends, with an interactive Streamlit dashboard.'},
+  {k:['scrap','selenium','playwright','tender','tamil','odisha','uttar','procure'], a:'I built scraping pipelines for public tender portals in Tamil Nadu, Odisha and Uttar Pradesh using Selenium, BeautifulSoup and Playwright in stealth mode.'},
+  {k:['skill','stack','tech','know'], a:'Core stack: Python, SQL, NLP and transformers, LLMs with RAG and LangChain, Pandas, Power BI, Streamlit, FastAPI and Docker.'},
+  {k:['contact','hire','email','reach'], a:'You can reach me at humaira2004super@gmail.com, or use the contact form below.'}
+];
+const chatBody=document.getElementById('chatBody');
+function addMsg(text,cls,note){
+  const d=document.createElement('div'); d.className='msg '+cls; d.textContent=text;
+  if(note){ const s=document.createElement('small'); s.textContent=note; d.appendChild(s); }
+  chatBody.appendChild(d); chatBody.scrollTop=chatBody.scrollHeight;
+}
+const FACTS = `You are the assistant on Humaira Fathima N's portfolio. Answer in 2-3 short sentences, using only these facts. If something is not covered, say so and suggest the contact section.
+Role: Data Analyst and AI Engineer, Chennai. Program Associate – Data Analyst at CEGIS Foundation (Jan 2026 – present): Selenium/Playwright/BeautifulSoup scraping of procurement portals in Tamil Nadu, Odisha and Uttar Pradesh; Google API automation; CatBoost model predicting tender win/loss; cartelisation analysis.
+Education: MCA pursuing at Manipal University Online; BCA at CTTE College for Women (2022-2025); AI/ML certification from IIT Madras via GUVI.
+Projects: RAG-Powered PDF Chatbot (LangChain, Hugging Face, vector search, FastAPI, Docker); Procurement web scraping; Predictive analysis and cartelisation detection; CapEx data pipeline (CMIE API); Traffic and road congestion analysis (Google APIs); Multiclass fish image classification (CNN); Nifty 50 stock analysis (Pandas, SQL, Power BI, Streamlit); PowerPulse household energy forecasting (ARIMA and ML, R² 0.89).
+Skills: Python, SQL, NLP, LLMs, RAG, LangChain, CatBoost, time-series forecasting, Pandas, Power BI, Streamlit, FastAPI, Docker, Git.
+Contact: humaira2004super@gmail.com, +91 95007 04568.`;
+
+const sampleP = (window.claude && window.claude.use)
+  ? window.claude.use('sample').catch(() => null) : Promise.resolve(null);
+
+document.getElementById('chatForm').onsubmit = async e => {
+  e.preventDefault();
+  const inp = document.getElementById('chatIn'), q = inp.value.trim();
+  if (!q) return;
+  inp.value = ''; addMsg(q, 'me');
+  const pipe = [...document.querySelectorAll('.pipe-step')];
+  let i = 0;
+  const anim = setInterval(() => {
+    pipe.forEach(s => s.classList.remove('active'));
+    if (i < pipe.length) { pipe[i].classList.add('active'); i++; }
+  }, 380);
+
+  let answer = null, note = 'Simulated answer';
+  const sample = await sampleP;
+  if (sample) {
+    try {
+      const r = await sample(FACTS + '\n\nQuestion: ' + q, { modelTier: 'quick', cache: false });
+      answer = r.text; note = 'Answered by Claude';
+    } catch (err) { answer = null; }
+  }
+  if (!answer) {
+    const low = q.toLowerCase();
+    const hit = replies.find(r => r.k.some(k => low.includes(k)));
+    answer = hit ? hit.a : 'Good question. Try asking about the RAG chatbot, the CatBoost model, forecasting, or my scraping work.';
+  }
+  clearInterval(anim);
+  pipe.forEach(s => s.classList.remove('active'));
+  addMsg(answer, 'bot', note);
+};
+
+/* Contact form: the page can't send mail, so copy a ready-to-send message instead */
+const note = () => document.getElementById('formNote');
+document.getElementById('contactForm').onsubmit = e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const text = 'To: humaira2004super@gmail.com\nSubject: Portfolio enquiry from ' + f.get('name') +
+    '\n\nFrom: ' + f.get('name') + ' <' + f.get('email') + '>\n\n' + f.get('message');
+  const done = () => { note().textContent = 'Message copied. Paste it into an email to humaira2004super@gmail.com.'; e.target.reset(); };
+  navigator.clipboard.writeText(text).then(done).catch(() => {
+    note().textContent = 'Copy not available here. Email humaira2004super@gmail.com directly.';
+  });
+};
+document.getElementById('copyEmail').onclick = () => {
+  navigator.clipboard.writeText('humaira2004super@gmail.com').then(() => {
+    document.getElementById('copyEmail').textContent = 'Copied';
+  }).catch(() => { note().textContent = 'Email: humaira2004super@gmail.com'; });
+};
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* Nav, progress, mobile menu */
+const nav=document.getElementById('nav'), prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled', scrollY>40);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(scrollY/h*100)+'%';
+},{passive:true});
+document.getElementById('burger').onclick=()=>document.getElementById('links').classList.toggle('open');
+document.querySelectorAll('#links a').forEach(a=>a.onclick=()=>document.getElementById('links').classList.remove('open'));
+
+/* Active nav link */
+const io2=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){
+    document.querySelectorAll('#links a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+en.target.id));
+  }
+}),{threshold:.45});
+['about','skills','experience','projects','demo','contact'].forEach(id=>io2.observe(document.getElementById(id)));
+
+/* Reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Count-up stats */
+const cIo=new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting) return;
+  const el=en.target, to=+el.dataset.count, suf=el.dataset.suffix ?? '', dec=+(el.dataset.dec||0);
+  const start=performance.now(), dur=1200;
+  const step=now=>{
+    const p=Math.min(1,(now-start)/dur), v=to*p;
+    el.textContent=v.toFixed(dec)+suf;
+    if(p<1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step); cIo.unobserve(el);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cIo.observe(el));
+
+/* Tilt on focus cards */
+document.querySelectorAll('.focus-card').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
+  });
+  c.addEventListener('mouseleave',()=>c.style.transform='');
+});
+</script>
 
 
-
-    <footer class="footer">
-        <p><i class="fa-solid fa-copyright"></i> Humaira Fathima N || All Rights Reserved...</p>
-    </footer>
-</body>
-</html>
